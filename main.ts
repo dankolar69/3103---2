@@ -24,3 +24,8 @@ radio.onReceivedValue(function on_received_value(name: string, value: number) {
     }
     
 })
+if (input.buttonIsPressed(Button.B)) {
+    stav = false
+    radio.sendNumber(2)
+}
+

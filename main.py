@@ -19,4 +19,10 @@ def on_received_value(name, value):
         C += 1
 radio.on_received_value(on_received_value)
 
+if input.button_is_pressed(Button.B):
+    stav = False
+    radio.send_number(2)
+
+
+
 
