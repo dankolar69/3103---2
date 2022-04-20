@@ -1,16 +1,16 @@
 radio.setGroup(33)
-let stav = false
 let A = 0
 let B = 0
 let C = 0
-if (input.buttonIsPressed(Button.A)) {
-    stav = true
+input.onButtonPressed(Button.A, function on_button_pressed_a() {
     radio.sendNumber(1)
-}
-
+})
+input.onButtonPressed(Button.B, function on_button_pressed_b() {
+    radio.sendNumber(2)
+})
 radio.onReceivedValue(function on_received_value(name: string, value: number) {
+    radio.receivedPacket(RadioPacketProperty.SignalStrength)
     
-    radio.receivedPacket(RadioPacketProperty.SerialNumber)
     if (value == 65) {
         A += 1
     }
@@ -25,7 +25,14 @@ radio.onReceivedValue(function on_received_value(name: string, value: number) {
     
 })
 if (input.buttonIsPressed(Button.B)) {
-    stav = false
     radio.sendNumber(2)
+    basic.showNumber(A)
+    basic.pause(3000)
+    basic.showNumber(B)
+    basic.pause(3000)
+    basic.showNumber(C)
 }
 
+console.logValue(65, A)
+console.logValue(66, B)
+console.logValue(67, C)
